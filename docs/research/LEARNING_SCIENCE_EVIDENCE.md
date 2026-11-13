@@ -1,0 +1,5 @@
+# Learning-science evidence
+
+The US National Academies' [Framework for K–12 Science Education](https://nap.nationalacademies.org/catalog/13165/a-framework-for-k-12-science-education-practices-crosscutting-concepts) includes planning investigations, analyzing data and constructing explanations. SenseLab maps these practices into explicit stages. [CAST UDL](https://udlguidelines.cast.org/) supports multiple means of representation and action; SenseLab exposes one series as table, graph and sound rather than disconnected activities. [WCAG 2.2](https://www.w3.org/TR/WCAG22/) informs access, while the product adds operable experimental control and reasoning.
+
+The reasoning check is formative, rule-based feedback. It does not grade conceptual correctness or claim learning gains. No learning-effectiveness study or participant outcome is claimed. A valid evaluation needs informed consent, representative blind/low-vision learners, educator review and predeclared measures such as independent completion and evidence-based explanation quality.

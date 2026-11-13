@@ -1,0 +1,12 @@
+import test from'node:test';import assert from'node:assert/strict';import{runExperiment,evaluateReasoning,customLinearModel}from'../src/science.js';
+test('heat model conserves supplied energy',()=>{const r=runExperiment('heat',{mass:1,energy:4184,initial:20,material:'water'});assert.equal(r.primary,21);assert.equal(r.metrics['Temperature change'],'1 °C')});
+test('heat model compares specific heat correctly',()=>{const water=runExperiment('heat',{mass:1,energy:4184,initial:20,material:'water'});const iron=runExperiment('heat',{mass:1,energy:4184,initial:20,material:'iron'});assert.ok(iron.primary>water.primary)});
+test('circuit model applies Ohm law and electrical power',()=>{const r=runExperiment('circuit',{voltage:12,resistance:6});assert.equal(r.primary,2);assert.equal(r.metrics.Power,'24 W')});
+test('circuit zero voltage produces zero current',()=>{assert.equal(runExperiment('circuit',{voltage:0,resistance:10}).primary,0)});
+test('motion model applies constant acceleration equation',()=>{const r=runExperiment('motion',{velocity:0,acceleration:2,time:5});assert.equal(r.primary,25);assert.equal(r.metrics['Final velocity'],'10 m/s')});
+test('motion at zero time has zero displacement',()=>{assert.equal(runExperiment('motion',{velocity:10,acceleration:3,time:0}).primary,0)});
+test('logistic population remains bounded by carrying capacity',()=>{const r=runExperiment('population',{initial:20,capacity:500,rate:.2,time:50});assert.ok(r.primary<500);assert.ok(r.primary>20)});
+test('population rejects invalid initial boundary',()=>{assert.throws(()=>runExperiment('population',{initial:500,capacity:500,rate:.2,time:20}),/below carrying capacity/)});
+test('numeric ranges are enforced',()=>{assert.throws(()=>runExperiment('circuit',{voltage:100,resistance:10}),RangeError)});
+test('reasoning assessment rewards evidence language',()=>{const a=evaluateReasoning({hypothesis:'If voltage rises, current rises because resistance is fixed.',conclusion:'The result shows more current; therefore the evidence supports the claim.',result:{unit:'A'}});assert.equal(a.score,4)});
+test('custom authoring uses safe linear model',()=>{assert.equal(customLinearModel({input:4,coefficient:2.5,intercept:1}),11)});
