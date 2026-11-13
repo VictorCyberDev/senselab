@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
+  <meta name="description" content="SenseLab enables blind and low-vision learners to conduct independent, accessible scientific investigations.">
+  <meta name="theme-color" content="#07111f">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/assets/icon.svg">
+  <link rel="stylesheet" href="/src/styles.css">
+  <title>SenseLab — Science Beyond Sight</title>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div id="announcer" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="SenseLab home"><img src="/assets/icon.svg" alt="" width="38" height="38"><span>SenseLab</span></a>
+    <button id="menu-button" class="menu-button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" aria-label="Primary">
+      <a href="#experiments">Investigate</a><a href="#notebook">Notebook</a><a href="#teacher">Teacher</a><a href="#author">Author</a><a href="#about">Evidence</a>
+    </nav>
+    <button id="preferences-button" class="secondary">Accessibility</button>
+  </header>
+  <main id="main" tabindex="-1"></main>
+  <footer><p>SenseLab is an educational simulation platform. Simulated values are not physical measurements.</p><p><a href="#privacy">Privacy</a> · <a href="https://github.com/VictorCyberDev/senselab">Source code</a></p></footer>
+
+  <dialog id="preferences-dialog" aria-labelledby="preferences-title">
+    <form method="dialog" id="preferences-form">
+      <div class="dialog-head"><h2 id="preferences-title">Accessibility preferences</h2><button value="cancel" aria-label="Close preferences">×</button></div>
+      <label><input type="checkbox" name="highContrast"> High contrast</label>
+      <label><input type="checkbox" name="largeText"> Large text</label>
+      <label><input type="checkbox" name="reducedMotion"> Reduce motion</label>
+      <label><input type="checkbox" name="verbose"> Detailed screen-reader announcements</label>
+      <label for="sonification-volume">Sonification volume</label><input id="sonification-volume" name="volume" type="range" min="0" max="1" step="0.1" value="0.35">
+      <div class="actions"><button class="primary" value="save">Save preferences</button></div>
+    </form>
+  </dialog>
+  <script type="module" src="/src/app.js"></script>
+</body>
+</html>

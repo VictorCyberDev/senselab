@@ -1,0 +1,15 @@
+{
+  "name": "senselab",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx serve . -l 3000",
+    "test": "node --test tests/*.test.js",
+    "typecheck": "node --check src/app.js && node --check src/science.js && node --check src/storage.js && node --check sw.js",
+    "lint": "node scripts/quality.mjs",
+    "build": "node scripts/build.mjs",
+    "check": "npm run typecheck && npm run lint && npm test && npm run build"
+  },
+  "engines": { "node": ">=20" }
+}
