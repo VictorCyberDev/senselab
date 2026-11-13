@@ -1,4 +1,4 @@
-const CACHE='senselab-v1';
+const CACHE='senselab-v2';
 const ASSETS=['/','/index.html','/src/styles.css','/src/app.js','/src/science.js','/src/storage.js','/manifest.webmanifest','/assets/icon.svg'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
